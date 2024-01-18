@@ -106,7 +106,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
                         .setCustomId('closeticket')
                         .setLabel('Schließen')
                         .setStyle(ButtonStyle.Danger)
-                        .setEmoji(`🔒`)
+                        .setEmoji('🔒')
                     )
                     await channel.send({ content: `<@&${role.id}>`, embeds: [openembed], components: [closeButton] })
 
@@ -117,7 +117,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
             })
         }
 
-        if (customId === "closeTicket") {
+        if (customId === "closeticket") {
             const closingEmbed = new EmbedBuilder()
             .setDescription('🔒 Bist du dir sicher, dass du das Ticket schließen möchtest?')
             .setColor('DarkRed')
@@ -149,7 +149,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
             });
 
             const transcriptEmbed = new EmbedBuilder()
-            .setAuthor({ name: `${interaction.guild.name}´s Transcript`, iconURL: guild.iconURL() })
+            .setAuthor({ name: `${interaction.guild.name}´s Transcripts`, iconURL: guild.iconURL() })
             .addFields(
                 { name: `Geschlossen von`, value: `${interaction.user.tag}` } 
             )
@@ -165,7 +165,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
             await interaction.reply({ embeds: [processEmbed] })
 
-            await guild.channels.cache.get(data.logs).send({
+            await guild.channels.cache.get(data.Logs).send({
                 embeds: [transcriptEmbed],
                 files: [transcript],
             });

@@ -6,7 +6,7 @@ module.exports = {
   .setDescription('Mit diesem Command kannst du den TP-MANAGER herunterfahren!'),
   async execute (interaction, client) {
 
-    if (interaction.user.id != '613671308005474304') return;
+    if (interaction.client.id != '613671308005474304') return;
     else {
 
       const embed = new EmbedBuilder()

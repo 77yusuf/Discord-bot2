@@ -16,10 +16,10 @@ module.exports = {
 
       const embed2 = new EmbedBuilder()
       .setColor('#00c7fe')
-      .setDescription('Das Ticket-System ist bereits gelöscht!')
+      .setDescription('Das Ticket Panel wurde bereits gelöscht!')
       .setTimestamp()
       .setAuthor({ name: 'Ticket System'})
-      .setFooter({ text: 'Ticket System gelöscht'})
+      .setFooter({ text: 'Ticket Panel bereits gelöscht'})
 
 
       const data = await ticketSchema.findOne({ GuildID: GuildID });
@@ -30,7 +30,7 @@ module.exports = {
 
       const channel = client.channels.cache.get(data.Channel);
       if (channel) {
-        await channel.message.fetch({ limit: 1}).then(messages => {
+        await channel.messages.fetch({ limit: 1}).then(messages => {
           const lastMessage = messages.first();
           if (lastMessage.author.id === client.user.id) {
             lastMessage.delete();
@@ -40,10 +40,10 @@ module.exports = {
 
       const embed = new EmbedBuilder()
       .setColor('#00c7fe')
-      .setDescription('Ticket System wurde gelöscht')
+      .setDescription('Ticket Panel wurde gelöscht')
       .setTimestamp()
       .setAuthor({ name: 'Ticket System'})
-      .setFooter({ text: 'Ticket System geklöscht'})
+      .setFooter({ text: 'Ticket Panel gelöscht'})
 
       await interaction.reply({ embeds: [embed] });
      } catch (err) {

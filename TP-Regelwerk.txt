@@ -1,0 +1,75 @@
+const { SlashCommandBuilder, EmbedBuilder, Embed } = require('discord.js');
+
+module.exports = {
+  data: new SlashCommandBuilder()
+  .setName("embed")
+  .setDescription("Sendet eine Embed Nachricht!"),
+  async execute(interaction, client) {
+    const embed = new EmbedBuilder()
+    .setTitle(`**TP-Gaming - Regelwerk!**`)
+    .setDescription(`§1: Verhaltensregeln
+    1.1 Respekt: Behandle andere Mitglieder stets respektvoll und vermeide Beleidigungen oder Diskriminierung.
+    
+    1.2 Sprache: Verwende angemessene Sprache und vermeide exzessiven Gebrauch von Schimpfwörtern.
+    
+    §2: Chat- und Kommunikationsregeln
+    2.1 Themengebundenheit: Führe Konversationen in den entsprechenden Kanälen und vermeide Off-Topic-Gespräche.
+    
+    2.2 Spam: Verhindere Spam und das Wiederholen von Nachrichten.
+    
+    §3: Voice-Chats
+    3.1 Mikrofone: Nutze Push-to-Talk oder minimiere Hintergrundgeräusche.
+    
+    3.2 Störungen: Unterbreche keine laufenden Gespräche anderer Mitglieder.
+    
+    §4: Inhalte und Medien
+    4.1 Urheberrechte: Teile keine urheberrechtlich geschützten Inhalte ohne Genehmigung.
+    
+    4.2 NSFW-Inhalte: Verboten ist das Teilen von nicht-jugendfreien Inhalten.
+    
+    4.3 Hassinhalte: Keine Verbreitung von rassistischen, sexistischen oder beleidigenden Inhalten.
+    
+    §5: Spiele und Events
+    5.1 Fair Play: Spiele fair und beachte die Spielregeln und Server-Regeln.
+    
+    5.2 Events: Teilnahme an geplanten Server-Events nach Ankündigungen.
+    
+    §6: Moderation und Sanktionen
+    6.1 Moderatoren: Respektiere Entscheidungen der Moderatoren.
+    
+    6.2 Sanktionen: Regelverstöße können zu Verwarnungen, Mutes oder Ausschlüssen führen.
+    
+    §7: Änderungen am Regelwerk
+    7.1 Aktualisierungen: Das Regelwerk kann von Administratoren aktualisiert werden. Mitglieder werden informiert.`)
+    .setColor(0x18e1ee)
+    //.setImage(client.user.displayAvatarURL())
+    .setThumbnail(client.user.displayAvatarURL())
+    .setTimestamp()
+    .setAuthor({ 
+      url: `https://www.youtube.com/@FloxTP`,
+      iconURL: interaction.user.displayAvatarURL(),
+      name: interaction.user.tag
+    })
+    .setFooter({
+      iconURL: client.user.displayAvatarURL(),
+      text: client.user.tag
+    })
+    .setURL('https://www.youtube.com/@FloxTP')
+    //.addFields([
+    //  {
+    //    name: `Spamming`,
+    //    value: 'Wird mit einem Timeout geahndet!',
+    //    inline: true
+    //  },
+    //  {
+    //    name: `Wie kann ich die Antwort auf 2000 Zeichen begrenzen?`,
+    //    value: '"Die Anwort darf Maximal 2000 Zeichen haben"',
+    //    inline: true
+    //  }
+    //]);
+
+    await interaction.reply({
+      embeds: [embed]
+    });
+  }
+}
